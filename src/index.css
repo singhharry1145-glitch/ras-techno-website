@@ -1,0 +1,297 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Dark tech theme - cyan to green gradient palette */
+    --background: 220 25% 8%;
+    --foreground: 210 40% 98%;
+
+    --card: 220 25% 12%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 220 25% 12%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Cyan-teal primary */
+    --primary: 175 80% 50%;
+    --primary-foreground: 220 25% 8%;
+
+    /* Purple/violet secondary */
+    --secondary: 270 60% 55%;
+    --secondary-foreground: 210 40% 98%;
+
+    /* Muted dark */
+    --muted: 220 25% 18%;
+    --muted-foreground: 215 20% 60%;
+
+    /* Coral/orange accent */
+    --accent: 25 90% 60%;
+    --accent-foreground: 220 25% 8%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 25% 20%;
+    --input: 220 25% 15%;
+    --ring: 175 80% 50%;
+
+    --radius: 0.75rem;
+
+    /* Custom colors - cyan to green gradient palette */
+    --cyan: 175 80% 50%;
+    --teal: 165 70% 45%;
+    --green: 150 60% 50%;
+    --magenta: 270 60% 55%;
+    --purple: 270 60% 55%;
+    --orange: 25 90% 60%;
+    --coral: 15 85% 55%;
+    --deep-blue: 220 25% 8%;
+    --glass: 220 25% 15%;
+
+    /* Gradients - cyan to green theme */
+    --gradient-primary: linear-gradient(135deg, hsl(175 80% 50%), hsl(150 60% 50%));
+    --gradient-secondary: linear-gradient(135deg, hsl(270 60% 55%), hsl(175 80% 50%));
+    --gradient-accent: linear-gradient(135deg, hsl(25 90% 60%), hsl(15 85% 55%));
+    --gradient-glow: linear-gradient(135deg, hsl(175 80% 50% / 0.3), hsl(150 60% 50% / 0.3));
+
+    /* Shadows */
+    --shadow-glow-cyan: 0 0 40px hsl(175 80% 50% / 0.4);
+    --shadow-glow-magenta: 0 0 40px hsl(270 60% 55% / 0.4);
+    --shadow-glow-purple: 0 0 40px hsl(270 60% 55% / 0.4);
+
+    --sidebar-background: 220 25% 12%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 175 80% 50%;
+    --sidebar-primary-foreground: 220 25% 8%;
+    --sidebar-accent: 220 25% 18%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 220 25% 20%;
+    --sidebar-ring: 175 80% 50%;
+  }
+
+  .dark {
+    --background: 220 25% 8%;
+    --foreground: 210 40% 98%;
+    --card: 220 25% 12%;
+    --card-foreground: 210 40% 98%;
+    --popover: 220 25% 12%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 175 80% 50%;
+    --primary-foreground: 220 25% 8%;
+    --secondary: 270 60% 55%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 220 25% 18%;
+    --muted-foreground: 215 20% 60%;
+    --accent: 25 90% 60%;
+    --accent-foreground: 220 25% 8%;
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 220 25% 20%;
+    --input: 220 25% 15%;
+    --ring: 175 80% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer utilities {
+  .text-gradient-primary {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-primary);
+  }
+
+  .text-gradient-secondary {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-secondary);
+  }
+
+  .bg-gradient-primary {
+    background-image: var(--gradient-primary);
+  }
+
+  .bg-gradient-secondary {
+    background-image: var(--gradient-secondary);
+  }
+
+  .bg-gradient-accent {
+    background-image: var(--gradient-accent);
+  }
+
+  .glass {
+    @apply bg-glass/50 backdrop-blur-xl border border-border/50;
+  }
+
+  .glow-cyan {
+    box-shadow: var(--shadow-glow-cyan);
+  }
+
+  .glow-magenta {
+    box-shadow: var(--shadow-glow-magenta);
+  }
+
+  .glow-purple {
+    box-shadow: var(--shadow-glow-purple);
+  }
+
+  .text-glow-cyan {
+    text-shadow: 0 0 20px hsl(var(--cyan) / 0.6);
+  }
+
+  .text-glow-magenta {
+    text-shadow: 0 0 20px hsl(var(--magenta) / 0.6);
+  }
+}
+
+@layer components {
+  .circuit-pattern {
+    background-image: 
+      radial-gradient(circle at 25% 25%, hsl(var(--cyan) / 0.03) 1px, transparent 1px),
+      radial-gradient(circle at 75% 75%, hsl(var(--magenta) / 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes float-shape {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+  }
+  25% {
+    transform: translateY(-20px) translateX(10px);
+  }
+  50% {
+    transform: translateY(-10px) translateX(-5px);
+  }
+  75% {
+    transform: translateY(-30px) translateX(5px);
+  }
+}
+
+@keyframes float-rotate {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-15px) rotate(90deg);
+  }
+  50% {
+    transform: translateY(-25px) rotate(180deg);
+  }
+  75% {
+    transform: translateY(-10px) rotate(270deg);
+  }
+}
+
+@keyframes pulse-float {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateY(-15px) scale(1.5);
+    opacity: 0.6;
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 8s ease infinite;
+}
+
+.animate-float-shape {
+  animation: float-shape 20s ease-in-out infinite;
+}
+
+.animate-float-rotate {
+  animation: float-rotate 25s ease-in-out infinite;
+}
+
+.animate-pulse-float {
+  animation: pulse-float 4s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 8s ease infinite;
+}
